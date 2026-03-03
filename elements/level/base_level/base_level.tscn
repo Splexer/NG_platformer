@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bkv3j5qu880tu"]
+
+[ext_resource type="Texture2D" uid="uid://boeqr0gfogifb" path="res://assets/tileset/2 Background/Layers/1.png" id="1_67jgq"]
+[ext_resource type="Texture2D" uid="uid://b1k3d851psmdx" path="res://assets/tileset/2 Background/Layers/2.png" id="2_70hva"]
+[ext_resource type="Texture2D" uid="uid://dccvypvweoi58" path="res://assets/tileset/2 Background/Layers/3.png" id="3_wusq6"]
+[ext_resource type="Texture2D" uid="uid://46kpdei7mco3" path="res://assets/tileset/2 Background/Layers/4.png" id="4_kyt65"]
+[ext_resource type="Texture2D" uid="uid://ckjw4n2v4qxg" path="res://assets/tileset/2 Background/Layers/5.png" id="5_lmbox"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_70hva"]
+
+[node name="base_level" type="Node2D" unique_id=1445714984]
+
+[node name="Parallax_back" type="Node2D" parent="." unique_id=203508321]
+
+[node name="Back1" type="Parallax2D" parent="Parallax_back" unique_id=710454931]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(576, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax_back/Back1" unique_id=1499744309]
+texture = ExtResource("1_67jgq")
+
+[node name="Back2" type="Parallax2D" parent="Parallax_back" unique_id=216015781]
+scroll_scale = Vector2(0.05, 0.05)
+repeat_size = Vector2(576, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax_back/Back2" unique_id=128484763]
+texture = ExtResource("2_70hva")
+
+[node name="Back3" type="Parallax2D" parent="Parallax_back" unique_id=160246512]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(576, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax_back/Back3" unique_id=558432045]
+texture = ExtResource("3_wusq6")
+
+[node name="Back4" type="Parallax2D" parent="Parallax_back" unique_id=886955587]
+scroll_scale = Vector2(0.4, 0.4)
+repeat_size = Vector2(576, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax_back/Back4" unique_id=515527789]
+texture = ExtResource("4_kyt65")
+
+[node name="Back5" type="Parallax2D" parent="Parallax_back" unique_id=1137988682]
+scroll_scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(576, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax_back/Back5" unique_id=1866652288]
+texture = ExtResource("5_lmbox")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1497228484]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=5427878]
+position = Vector2(0, 100)
+collision_layer = 2
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=807273280]
+shape = SubResource("WorldBoundaryShape2D_70hva")

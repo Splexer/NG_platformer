@@ -1,0 +1,30 @@
+extends Person
+
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		
+	var direction: float = 0.0
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump_force
+	if Input.is_action_pressed("walk_left"):
+		direction = -1.0
+		anim_sprite.flip_h = true
+	if	Input.is_action_pressed("walk_right"):
+		direction = 1.0
+		anim_sprite.flip_h = false
+		
+	if direction != 0.0:
+		velocity.x = direction * speed
+		anim_sprite.play("run")
+	else:
+		velocity.x = move_toward(velocity.x, 0, speed)
+		anim_sprite.play("idle")
+
+	move_and_slide()
