@@ -9,13 +9,17 @@ class_name Person
 @export var HP : int = 1
 @export var speed : float = 300.0
 @export var damage : int = 1
+@export var attack_range : float = 50
+@export var attack_delay : float = 0.1
 @export var jump_force : float = -400.0
+
 
 @export var looking_to_the_right: bool = true
 
 ##Время неуязвимости после получения урона в секундах
 @export var damage_immunity: float = 0.3
 
+var direction : float = 0.0
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -61,6 +65,7 @@ func play_animation(anim: String)-> void:
 		return	
 
 func get_direction()-> float:
+	direction = 1.0
 	return 1.0
 #func _physics_process(delta: float) -> void:
 	## Add the gravity.

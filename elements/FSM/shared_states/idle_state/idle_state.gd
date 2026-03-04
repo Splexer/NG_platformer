@@ -37,5 +37,5 @@ func handle_input(event: InputEvent) -> void:
 		state_machine.transition_to("jump_state")
 	if event.is_action_pressed("attack"):
 		state_machine.transition_to("attack_state")
-	if event.is_action_pressed("dash") and person.dash_cooldown_timer.is_stopped():
-		state_machine.transition_to("dash_state")
+	#if event.is_action_pressed("dash") and person.dash_cooldown_timer.is_stopped():
+		#state_machine.transition_to("dash_state")

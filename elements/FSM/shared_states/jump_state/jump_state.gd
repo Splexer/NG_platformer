@@ -2,10 +2,11 @@ extends State
 
 
 func enter()-> void:
+	if person is Player:
+		person.can_coyote_jump = false
 	person.velocity.y = person.jump_force
 	person.play_animation("jump")
-	if person is Player:
-		person.coy_timer.start()
+
 
 func physics_update(delta: float)-> void:
 	person.velocity.y += Global.get_gravity() * delta

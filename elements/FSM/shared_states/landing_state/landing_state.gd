@@ -9,6 +9,8 @@ var _timer : float = 0.0
 func enter()-> void:
 	person.play_animation("landing")
 	_timer = LANDING_TIME
+	if person is Player:
+		person.can_coyote_jump = true
 	
 func exit()-> void:
 	pass

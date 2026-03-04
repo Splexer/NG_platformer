@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://biu1mrbaj2rj6"]
+
+[ext_resource type="PackedScene" uid="uid://c2pycc0ooyhh5" path="res://elements/FSM/base_state/state.tscn" id="1_dtqjp"]
+[ext_resource type="Script" uid="uid://de2757410p06e" path="res://elements/FSM/player_states/dash_state/dash_state.gd" id="2_uxqcv"]
+
+[node name="dash_state" unique_id=371355705 instance=ExtResource("1_dtqjp")]
+script = ExtResource("2_uxqcv")

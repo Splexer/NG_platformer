@@ -2,8 +2,10 @@ extends Person
 
 class_name Player
 
-@export var coyote_time : float = 1.0#0.16
+@export var coyote_time : float = 0.16
 @onready var coy_timer : Timer = $Coyote_timer
+
+var can_coyote_jump : bool = false
 
 
 func _ready() -> void:
@@ -41,4 +43,5 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func get_direction()-> float:
-	return Input.get_axis("walk_left", "walk_right")
+	direction = Input.get_axis("walk_left", "walk_right")
+	return direction

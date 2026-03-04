@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cjssxebgej2ws" path="res://elements/FSM/shared_states/jump_state/jump_state.tscn" id="5_n7llv"]
 [ext_resource type="PackedScene" uid="uid://bu7efi415e2x5" path="res://elements/FSM/shared_states/fall_state/fall_state.tscn" id="6_pohwr"]
 [ext_resource type="PackedScene" uid="uid://conscq7a0gspm" path="res://elements/FSM/shared_states/landing_state/landing_state.tscn" id="7_chkih"]
+[ext_resource type="PackedScene" uid="uid://bygwam64an466" path="res://elements/FSM/shared_states/attack_state/attack_state.tscn" id="8_1uy3v"]
 
 [node name="base_person" type="CharacterBody2D" unique_id=763419446]
 collision_mask = 15
@@ -15,10 +16,6 @@ script = ExtResource("1_nc1tx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=147210089]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1254880589]
-
-[node name="Attack_Area" type="Area2D" parent="." unique_id=1875488580]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Area" unique_id=2085485093]
 
 [node name="state_machine" parent="." unique_id=132109719 node_paths=PackedStringArray("initial_state") instance=ExtResource("2_lrf1f")]
 initial_state = NodePath("idle_state")
@@ -32,3 +29,5 @@ initial_state = NodePath("idle_state")
 [node name="fall_state" parent="state_machine" unique_id=474817928 instance=ExtResource("6_pohwr")]
 
 [node name="landing_state" parent="state_machine" unique_id=1650693448 instance=ExtResource("7_chkih")]
+
+[node name="attack_state" parent="state_machine" unique_id=799907004 instance=ExtResource("8_1uy3v")]
