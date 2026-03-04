@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://biitij8eg7no5"]
 
 [ext_resource type="PackedScene" uid="uid://c2pycc0ooyhh5" path="res://elements/FSM/base_state/state.tscn" id="1_my6yy"]
-[ext_resource type="Script" uid="uid://chgvv0o0uowts" path="res://elements/FSM/idle_state/idle_state.gd" id="2_h3p1a"]
+[ext_resource type="Script" uid="uid://chgvv0o0uowts" path="res://elements/FSM/shared_states/idle_state/idle_state.gd" id="2_h3p1a"]
 
 [node name="idle_state" unique_id=371355705 instance=ExtResource("1_my6yy")]
 script = ExtResource("2_h3p1a")

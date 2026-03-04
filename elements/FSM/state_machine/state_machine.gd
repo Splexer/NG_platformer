@@ -6,7 +6,7 @@ class_name StateMachine
 
 var current_state: State
 
-func _init(person: Person) -> void:
+func setup(person: Person) -> void:
 	#Это мы всем состояниям дочерним инициализируем персонажа
 	for child in get_children():
 		child.person = person
@@ -19,16 +19,21 @@ func transition_to(new_state_name: String)-> void:
 	if new_state == current_state:
 		return
 	current_state.exit()
-	current_state = new_state
+	current_state = new_state as State
 	current_state.enter()
 		
 func update(delta: float)-> void:
-	current_state.update(delta) 
+	if current_state != null:
+		current_state.update(delta) 
 	
+		
 func physics_update(delta: float)-> void:
-	current_state.physic_update(delta)
+	if current_state != null:
+		current_state.physics_update(delta)
+
 	
 func handle_input(event: InputEvent)-> void:
-	current_state.handle_input(event)
+	if current_state != null:
+		current_state.handle_input(event)
 	
 	

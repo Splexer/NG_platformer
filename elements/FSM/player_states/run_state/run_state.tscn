@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bfjgd48ew335a"]
+
+[ext_resource type="PackedScene" uid="uid://c2pycc0ooyhh5" path="res://elements/FSM/base_state/state.tscn" id="1_exdrd"]
+[ext_resource type="Script" uid="uid://ci5b7w5mxg4fs" path="res://elements/FSM/player_states/run_state/run_state.gd" id="2_xebch"]
+
+[node name="run_state" unique_id=371355705 instance=ExtResource("1_exdrd")]
+script = ExtResource("2_xebch")

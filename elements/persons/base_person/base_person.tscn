@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://do8177rqbm74"]
 
 [ext_resource type="Script" uid="uid://bs1r4pf81cf78" path="res://elements/persons/base_person/base_person.gd" id="1_nc1tx"]
+[ext_resource type="PackedScene" uid="uid://2xmu6ria6fms" path="res://elements/FSM/state_machine/state_machine.tscn" id="2_lrf1f"]
+[ext_resource type="PackedScene" uid="uid://biitij8eg7no5" path="res://elements/FSM/shared_states/idle_state/idle_state.tscn" id="3_0m8cv"]
+[ext_resource type="PackedScene" uid="uid://bfjgd48ew335a" path="res://elements/FSM/player_states/run_state/run_state.tscn" id="4_1uy3v"]
+[ext_resource type="PackedScene" uid="uid://cjssxebgej2ws" path="res://elements/FSM/shared_states/jump_state/jump_state.tscn" id="5_n7llv"]
+[ext_resource type="PackedScene" uid="uid://bu7efi415e2x5" path="res://elements/FSM/shared_states/fall_state/fall_state.tscn" id="6_pohwr"]
+[ext_resource type="PackedScene" uid="uid://conscq7a0gspm" path="res://elements/FSM/shared_states/landing_state/landing_state.tscn" id="7_chkih"]
 
 [node name="base_person" type="CharacterBody2D" unique_id=763419446]
 collision_mask = 15
@@ -9,3 +15,20 @@ script = ExtResource("1_nc1tx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=147210089]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1254880589]
+
+[node name="Attack_Area" type="Area2D" parent="." unique_id=1875488580]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Area" unique_id=2085485093]
+
+[node name="state_machine" parent="." unique_id=132109719 node_paths=PackedStringArray("initial_state") instance=ExtResource("2_lrf1f")]
+initial_state = NodePath("idle_state")
+
+[node name="idle_state" parent="state_machine" unique_id=371355705 instance=ExtResource("3_0m8cv")]
+
+[node name="run_state" parent="state_machine" unique_id=724417814 instance=ExtResource("4_1uy3v")]
+
+[node name="jump_state" parent="state_machine" unique_id=937377025 instance=ExtResource("5_n7llv")]
+
+[node name="fall_state" parent="state_machine" unique_id=474817928 instance=ExtResource("6_pohwr")]
+
+[node name="landing_state" parent="state_machine" unique_id=1650693448 instance=ExtResource("7_chkih")]

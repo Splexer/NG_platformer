@@ -11,14 +11,25 @@ class_name Person
 @export var damage : int = 1
 @export var jump_force : float = -400.0
 
-@export var looking_to_the_right : bool = true
+@export var looking_to_the_right: bool = true
 
 ##Время неуязвимости после получения урона в секундах
-@export var i_frames_time : float = 0.3
+@export var damage_immunity: float = 0.3
 
 
-@onready var collision_shape : CollisionShape2D = $CollisionShape2D
-@onready var anim_sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var state_machine: StateMachine = $state_machine
+
+func _ready()-> void:
+	HP = max_HP
+	state_machine.setup(self)
+
+func _physics_process(delta: float)-> void:
+	state_machine.physics_update(delta)
+	
+func _process(delta: float)-> void:
+	state_machine.update(delta)
 
 ##Функция получения урона. Безопасныое отключение коллизии, индикация цветом и проверка смерти
 func get_damage(damage : int)-> void:
@@ -28,7 +39,7 @@ func get_damage(damage : int)-> void:
 	if HP <= 0:
 		_die()
 	else:
-		await get_tree().create_timer(i_frames_time).timeout
+		await get_tree().create_timer(damage_immunity).timeout
 		anim_sprite.modulate = Color(1.0, 1.0, 1.0)
 		collision_shape.set_deferred("disabled", false)	
 		
@@ -38,10 +49,19 @@ func _die()-> void:
 	
 func update_look_direction(direction: float)-> void:
 	if direction < 0.0:
+		anim_sprite.flip_h = true
+	else:
 		anim_sprite.flip_h = false
-	
-	
-#
+
+func play_animation(anim: String)-> void:
+	if anim_sprite.sprite_frames.has_animation(anim):
+		anim_sprite.play(anim)
+	else:
+		push_error("У персонажа ", self, " отсутствует анимация - ", anim)
+		return	
+
+func get_direction()-> float:
+	return 1.0
 #func _physics_process(delta: float) -> void:
 	## Add the gravity.
 	#if not is_on_floor():

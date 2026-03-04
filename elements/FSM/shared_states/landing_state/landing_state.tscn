@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://conscq7a0gspm"]
+
+[ext_resource type="PackedScene" uid="uid://c2pycc0ooyhh5" path="res://elements/FSM/base_state/state.tscn" id="1_r741y"]
+[ext_resource type="Script" uid="uid://kctvtm0silm1" path="res://elements/FSM/shared_states/landing_state/landing_state.gd" id="2_ig2m0"]
+
+[node name="landing_state" unique_id=371355705 instance=ExtResource("1_r741y")]
+script = ExtResource("2_ig2m0")

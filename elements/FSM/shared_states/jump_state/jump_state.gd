@@ -1,18 +1,18 @@
-extends Node
-
-var person: Person
-var state_machine: StateMachine
+extends State
 
 
 func enter()-> void:
 	person.velocity.y = person.jump_force
-	person.anim_sprite.play("jump")
+	person.play_animation("jump")
+	if person is Player:
+		person.coy_timer.start()
 
 func physics_update(delta: float)-> void:
 	person.velocity.y += Global.get_gravity() * delta
-	var direction: float = _get_direction()
-	person.velocity.x = direction * person.speed * delta
+	var direction: float = person.get_direction()
+	person.velocity.x = direction * person.speed
 	person.update_look_direction(direction)
+	person.move_and_slide()
 	
 	#Начали падать
 	if person.velocity.y > 0:
@@ -23,8 +23,6 @@ func physics_update(delta: float)-> void:
 	if person.is_on_floor():
 		state_machine.transition_to("idle_state")
 	
-	person.move_and_slide()
-	
 func handle_input(event: InputEvent)-> void:
 	#Можно попробовать сделать силу прыжка зависимой от отпускания, если отпустить раньше
 	#То быстрее упадёшь
@@ -32,15 +30,6 @@ func handle_input(event: InputEvent)-> void:
 		#actor.velocity.y *= 0.5
 	pass
 
-func _get_direction()-> float:
-	if person is Player:
-		return Input.get_axis("walk_left", "walk_right")
-		
-	var npc: NPC = person as NPC
-	if npc and npc.target != null:
-		#Заглушка, но здесь надо, сделать, чтобы NPC прыгал в направление цели.
-			return 1.0
-	
-	return 0.0
+
 	
 	

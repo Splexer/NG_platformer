@@ -3,7 +3,7 @@ extends State
 
 func enter()-> void:
 	person.velocity.x = 0
-	person.anim_sprite.play("idle")
+	person.play_animation("idle")
 
 func update(delta: float)-> void:
 	pass
@@ -33,9 +33,9 @@ func physics_update(delta: float)-> void:
 func handle_input(event: InputEvent) -> void:
 	if not person is Player:
 		return
-	if event.is_action_just_pressed("jump"):
+	if event.is_action_pressed("jump"):
 		state_machine.transition_to("jump_state")
-	if event.is_action_just_pressed("attack"):
+	if event.is_action_pressed("attack"):
 		state_machine.transition_to("attack_state")
-	if event.is_action_just_pressed("dash") and person.dash_cooldown_timer.is_stopped():
+	if event.is_action_pressed("dash") and person.dash_cooldown_timer.is_stopped():
 		state_machine.transition_to("dash_state")

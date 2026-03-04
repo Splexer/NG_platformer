@@ -28,6 +28,10 @@ region = Rect2(256, 192, 64, 64)
 atlas = ExtResource("2_0y2mm")
 region = Rect2(448, 192, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ubq1"]
+atlas = ExtResource("2_0y2mm")
+region = Rect2(960, 128, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmk5y"]
 atlas = ExtResource("2_0y2mm")
 region = Rect2(192, 0, 64, 64)
@@ -39,6 +43,18 @@ region = Rect2(256, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_osi3h"]
 atlas = ExtResource("2_0y2mm")
 region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atsnr"]
+atlas = ExtResource("2_0y2mm")
+region = Rect2(1088, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw0gl"]
+atlas = ExtResource("2_0y2mm")
+region = Rect2(1024, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faci2"]
+atlas = ExtResource("2_0y2mm")
+region = Rect2(768, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d77wc"]
 atlas = ExtResource("2_0y2mm")
@@ -94,6 +110,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4ubq1")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rmk5y")
 }, {
 "duration": 1.0,
@@ -108,6 +132,25 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atsnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sw0gl")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faci2")
+}],
+"loop": false,
+"name": &"landing",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -133,16 +176,19 @@ animations = [{
 radius = 16.0
 height = 48.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrq72"]
+
 [node name="Player" unique_id=763419446 instance=ExtResource("1_5itjq")]
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("2_wlevv")
-coyote_time = 0.16
+coyote_time = 1.0
+max_HP = 100
 HP = 100
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=147210089]
 sprite_frames = SubResource("SpriteFrames_yfpiw")
-animation = &"run"
+animation = &"landing"
 autoplay = "idle"
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1254880589]
@@ -151,10 +197,12 @@ shape = SubResource("CapsuleShape2D_37o73")
 
 [node name="Camera2D" type="Camera2D" parent="." index="2" unique_id=1327425290]
 limit_bottom = 100
-position_smoothing_enabled = true
 position_smoothing_speed = 9.0
 
 [node name="Coyote_timer" type="Timer" parent="." index="3" unique_id=1384191164]
 process_callback = 0
-wait_time = 0.15
 one_shot = true
+
+[node name="CollisionShape2D" parent="Attack_Area" parent_id_path=PackedInt32Array(1875488580) index="0" unique_id=2085485093]
+position = Vector2(29, -2)
+shape = SubResource("RectangleShape2D_wrq72")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjssxebgej2ws"]
 
 [ext_resource type="PackedScene" uid="uid://c2pycc0ooyhh5" path="res://elements/FSM/base_state/state.tscn" id="1_vmvuh"]
-[ext_resource type="Script" uid="uid://dvxvpbg2jgqb" path="res://elements/FSM/jump_state/jump_state.gd" id="2_tkps6"]
+[ext_resource type="Script" uid="uid://dvxvpbg2jgqb" path="res://elements/FSM/shared_states/jump_state/jump_state.gd" id="2_tkps6"]
 
 [node name="jump_state" unique_id=371355705 instance=ExtResource("1_vmvuh")]
 script = ExtResource("2_tkps6")
