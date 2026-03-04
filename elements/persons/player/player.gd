@@ -1,8 +1,14 @@
 extends Person
 
+class_name Player
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@export var coyote_time : float = 0.16
+@onready var coy_timer : Timer = $Coyote_timer
+
+
+func _ready() -> void:
+	coy_timer.wait_time = coyote_time
+	
 
 
 func _physics_process(delta: float) -> void:

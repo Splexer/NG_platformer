@@ -137,11 +137,12 @@ height = 48.0
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("2_wlevv")
+coyote_time = 0.16
 HP = 100
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=147210089]
 sprite_frames = SubResource("SpriteFrames_yfpiw")
-animation = &"attack_1"
+animation = &"run"
 autoplay = "idle"
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1254880589]
@@ -149,5 +150,11 @@ visible = false
 shape = SubResource("CapsuleShape2D_37o73")
 
 [node name="Camera2D" type="Camera2D" parent="." index="2" unique_id=1327425290]
+limit_bottom = 100
 position_smoothing_enabled = true
 position_smoothing_speed = 9.0
+
+[node name="Coyote_timer" type="Timer" parent="." index="3" unique_id=1384191164]
+process_callback = 0
+wait_time = 0.15
+one_shot = true

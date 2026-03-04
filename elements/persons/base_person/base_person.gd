@@ -5,10 +5,13 @@ class_name Person
 #const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0
 
+@export var max_HP : int = 1
 @export var HP : int = 1
 @export var speed : float = 300.0
 @export var damage : int = 1
 @export var jump_force : float = -400.0
+
+@export var looking_to_the_right : bool = true
 
 ##Время неуязвимости после получения урона в секундах
 @export var i_frames_time : float = 0.3
@@ -18,7 +21,7 @@ class_name Person
 @onready var anim_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
 ##Функция получения урона. Безопасныое отключение коллизии, индикация цветом и проверка смерти
-func _get_damage(damage : int)-> void:
+func get_damage(damage : int)-> void:
 	collision_shape.set_deferred("disabled", true)
 	anim_sprite.modulate = Color(1.0, 0.2, 0.2)
 	HP -= damage
@@ -33,7 +36,11 @@ func _get_damage(damage : int)-> void:
 func _die()-> void:
 	print("я - ", self, " умэр. hp = ", HP)
 	
-
+func update_look_direction(direction: float)-> void:
+	if direction < 0.0:
+		anim_sprite.flip_h = false
+	
+	
 #
 #func _physics_process(delta: float) -> void:
 	## Add the gravity.

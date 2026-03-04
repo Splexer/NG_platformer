@@ -34,6 +34,7 @@ repeat_size = Vector2(576, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax_back/Back3" unique_id=558432045]
+position = Vector2(-6, -25)
 texture = ExtResource("3_wusq6")
 
 [node name="Back4" type="Parallax2D" parent="Parallax_back" unique_id=886955587]
@@ -50,6 +51,7 @@ repeat_size = Vector2(576, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax_back/Back5" unique_id=1866652288]
+position = Vector2(4, 5)
 texture = ExtResource("5_lmbox")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1497228484]
