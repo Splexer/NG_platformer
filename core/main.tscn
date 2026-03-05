@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://f3i8ggaxr6jw"]
 
+[ext_resource type="PackedScene" uid="uid://obxmq5wiupya" path="res://UI/hud.tscn" id="1_csopv"]
 [ext_resource type="PackedScene" uid="uid://bkv3j5qu880tu" path="res://elements/level/base_level/base_level.tscn" id="1_xiose"]
 [ext_resource type="PackedScene" uid="uid://bp1iojeigcpnp" path="res://elements/persons/player/player.tscn" id="2_r77kf"]
 [ext_resource type="PackedScene" uid="uid://bwtja33g21a15" path="res://elements/persons/NPC/npc.tscn" id="3_3gdo0"]
 
 [node name="Main" type="Node2D" unique_id=1913807260]
+
+[node name="HUD" parent="." unique_id=35373562 instance=ExtResource("1_csopv")]
 
 [node name="base_level" parent="." unique_id=1445714984 instance=ExtResource("1_xiose")]
 
@@ -14,3 +17,6 @@ collision_mask = 15
 
 [node name="NPC" parent="." unique_id=1562395949 instance=ExtResource("3_3gdo0")]
 position = Vector2(-144, -82)
+
+[node name="NPC2" parent="." unique_id=249021400 instance=ExtResource("3_3gdo0")]
+position = Vector2(792, -77)

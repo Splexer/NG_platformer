@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://obxmq5wiupya"]
+
+[ext_resource type="Script" uid="uid://cigjhepg5dqc" path="res://UI/hud.gd" id="1_ne75i"]
+
+[node name="HUD" type="CanvasLayer" unique_id=35373562]
+script = ExtResource("1_ne75i")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=735199131]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HP_box" type="HBoxContainer" parent="MarginContainer" unique_id=408698187]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HP_header" type="Label" parent="MarginContainer/HP_box" unique_id=137875559]
+layout_mode = 2
+text = "HP:"
+
+[node name="HP_actual_label" type="Label" parent="MarginContainer/HP_box" unique_id=2008990534]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "10"
+
+[node name="HP_max_label" type="Label" parent="MarginContainer/HP_box" unique_id=1486903452]
+layout_mode = 2
+text = "/10"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=849723116]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Game_over_label" type="Label" parent="ColorRect" unique_id=873942844]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8666667, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "GAME OVER"
+
+[node name="Win_label" type="Label" parent="ColorRect" unique_id=152496406]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.65882355, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "YOU WIN!"

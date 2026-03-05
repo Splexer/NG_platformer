@@ -10,3 +10,6 @@ func get_gravity()-> float:
 
 func set_gravity(new_gravity: float)-> void:
 	gravity = new_gravity	
+
+func exit_game()-> void:
+	get_tree().quit()

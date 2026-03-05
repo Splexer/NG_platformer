@@ -3,7 +3,6 @@ extends State
 
 func enter()-> void:
 	person.play_animation("chase")
-	print("началась погоня")
 	
 func exit()-> void:
 	pass

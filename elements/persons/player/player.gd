@@ -12,6 +12,9 @@ var can_coyote_jump : bool = false
 
 func _ready() -> void:
 	coy_timer.wait_time = coyote_time
+	Events.game_win.connect(_win_handler)
+	HP = max_HP
+	Events.player_hp_update.emit(HP, max_HP)
 	super._ready()
 	
 
@@ -23,12 +26,26 @@ func get_damage(damage : int)-> void:
 	call_deferred("set_collision_layer_value", 3, false)
 	anim_sprite.modulate = Color(1.0, 0.2, 0.2)
 	HP -= damage
+	Events.player_hp_update.emit(HP, max_HP)
 	if HP <= 0:
 		_die()
 	else:
 		await get_tree().create_timer(damage_immunity).timeout
 		anim_sprite.modulate = Color(1.0, 1.0, 1.0)
 		call_deferred("set_collision_layer_value", 3, true)
+
+func _die()-> void:
+	call_deferred("set_collision_layer_value", 3, false)
+	speed = 0.0
+	jump_force = 0.0
+	damage = 0
+	Events.game_over.emit()
+	
+func _win_handler()-> void:
+	call_deferred("set_collision_layer_value", 3, false)
+	speed = 0.0
+	jump_force = 0.0
+	damage = 0
 
 func get_direction()-> float:
 	direction = Input.get_axis("walk_left", "walk_right")
