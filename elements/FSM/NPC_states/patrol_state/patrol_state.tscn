@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dh53d8so6fr75"]
+
+[ext_resource type="PackedScene" uid="uid://c2pycc0ooyhh5" path="res://elements/FSM/base_state/state.tscn" id="1_k3lvv"]
+[ext_resource type="Script" uid="uid://5uvkc1lplvmq" path="res://elements/FSM/NPC_states/patrol_state/patrol_state.gd" id="2_tskmf"]
+
+[node name="patrol_state" unique_id=371355705 instance=ExtResource("1_k3lvv")]
+script = ExtResource("2_tskmf")

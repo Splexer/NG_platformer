@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c0o6xeymj84hm" path="res://assets/persons/player/Char_3_No_Armor.png" id="2_0y2mm"]
 [ext_resource type="Script" uid="uid://ddqn65o45fybn" path="res://elements/persons/player/player.gd" id="2_wlevv"]
 [ext_resource type="PackedScene" uid="uid://biu1mrbaj2rj6" path="res://elements/FSM/player_states/dash_state/dash_state.tscn" id="4_wlevv"]
+[ext_resource type="PackedScene" uid="uid://bfjgd48ew335a" path="res://elements/FSM/player_states/run_state/run_state.tscn" id="5_dtn7f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_37o73"]
 atlas = ExtResource("2_0y2mm")
@@ -29,9 +30,9 @@ region = Rect2(256, 192, 64, 64)
 atlas = ExtResource("2_0y2mm")
 region = Rect2(448, 192, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ubq1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw0gl"]
 atlas = ExtResource("2_0y2mm")
-region = Rect2(960, 128, 64, 64)
+region = Rect2(1024, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmk5y"]
 atlas = ExtResource("2_0y2mm")
@@ -49,9 +50,9 @@ region = Rect2(320, 0, 64, 64)
 atlas = ExtResource("2_0y2mm")
 region = Rect2(1088, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sw0gl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ubq1"]
 atlas = ExtResource("2_0y2mm")
-region = Rect2(1024, 128, 64, 64)
+region = Rect2(960, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_faci2"]
 atlas = ExtResource("2_0y2mm")
@@ -111,7 +112,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4ubq1")
+"texture": SubResource("AtlasTexture_sw0gl")
 }],
 "loop": true,
 "name": &"fall",
@@ -139,7 +140,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_atsnr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sw0gl")
+"texture": SubResource("AtlasTexture_4ubq1")
 }],
 "loop": true,
 "name": &"jump",
@@ -174,28 +175,45 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37o73"]
-radius = 16.0
-height = 48.0
+radius = 12.0
+height = 42.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dtn7f"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 27.475, 0)
+emission_shape = 1
+emission_sphere_radius = 10.0
+angle_min = -89.99999
+angle_max = 90.000015
+direction = Vector3(0, -1, 0)
+spread = 60.0
+initial_velocity_min = 40.0
+initial_velocity_max = 90.0
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 4.0
+color = Color(0.3882353, 0.105882354, 0.23137255, 1)
 
 [node name="Player" unique_id=763419446 instance=ExtResource("1_5itjq")]
-collision_layer = 4
+collision_layer = 12
 collision_mask = 11
 script = ExtResource("2_wlevv")
 coyote_time = 0.16
-max_HP = 100
-HP = 100
+max_HP = 50
+HP = 50
 attack_delay = 0.2
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=147210089]
 sprite_frames = SubResource("SpriteFrames_yfpiw")
-animation = &"attack_3"
+animation = &"landing"
 autoplay = "idle"
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1254880589]
 shape = SubResource("CapsuleShape2D_37o73")
 
 [node name="Camera2D" type="Camera2D" parent="." index="2" unique_id=1327425290]
-limit_bottom = 100
+limit_top = -200
+limit_bottom = 150
 position_smoothing_speed = 15.0
 
 [node name="Coyote_timer" type="Timer" parent="." index="3" unique_id=1384191164]
@@ -203,4 +221,15 @@ process_callback = 0
 wait_time = 0.16
 one_shot = true
 
+[node name="run_state" parent="state_machine" parent_id_path=PackedInt32Array(132109719) index="5" unique_id=1117405006 instance=ExtResource("5_dtn7f")]
+
 [node name="dash_state" parent="state_machine" parent_id_path=PackedInt32Array(132109719) index="6" unique_id=371355705 instance=ExtResource("4_wlevv")]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5" unique_id=561832678]
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_dtn7f")

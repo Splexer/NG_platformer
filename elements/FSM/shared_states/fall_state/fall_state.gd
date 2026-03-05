@@ -14,7 +14,6 @@ func physics_update(delta: float)-> void:
 	var direction: float = person.get_direction()
 	person.velocity.x = direction * person.speed
 	person.update_look_direction(direction)
-	
 	person.move_and_slide()
 	
 	if person.is_on_floor():

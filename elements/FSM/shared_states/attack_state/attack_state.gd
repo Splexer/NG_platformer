@@ -32,14 +32,16 @@ func handle_input(event: InputEvent)-> void:
 
 func _shot_ray_and_get_collider(collision_mask: int)-> Dictionary:
 	var space_state: PhysicsDirectSpaceState2D = person.get_world_2d().direct_space_state
-	if person.direction == 0.0:
-		person.direction = 1.0
+	if person.get_direction() >= 0.0:
+		person.set_direction(1.0)
 	else:
-		person.direction = -1.0	
-
+		person.set_direction(1.0)
+	if person is NPC:
+		person.set_direction(sign(person.target.global_position.x - person.global_position.x))
+		
 	var query = PhysicsRayQueryParameters2D.create(person.global_position, \
 	person.global_position + \
-	Vector2(person.direction * person.attack_range, 0), collision_mask)
+	Vector2(person.get_direction() * person.attack_range, 0), collision_mask)
 	var result: Dictionary = space_state.intersect_ray(query)
 	return result
 	

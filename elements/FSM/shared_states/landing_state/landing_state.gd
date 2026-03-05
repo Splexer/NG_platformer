@@ -11,6 +11,7 @@ func enter()-> void:
 	_timer = LANDING_TIME
 	if person is Player:
 		person.can_coyote_jump = true
+		person.particles.emitting = true
 	
 func exit()-> void:
 	pass

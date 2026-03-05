@@ -2,6 +2,235 @@
 
 [ext_resource type="PackedScene" uid="uid://do8177rqbm74" path="res://elements/persons/base_person/base_person.tscn" id="1_68lgc"]
 [ext_resource type="Script" uid="uid://buw285llgxuqf" path="res://elements/persons/NPC/npc.gd" id="2_q41cc"]
+[ext_resource type="Texture2D" uid="uid://c0o6xeymj84hm" path="res://assets/persons/player/Char_3_No_Armor.png" id="3_48a52"]
+[ext_resource type="PackedScene" uid="uid://dh53d8so6fr75" path="res://elements/FSM/NPC_states/patrol_state/patrol_state.tscn" id="4_x1war"]
+[ext_resource type="PackedScene" uid="uid://blb5djc0nffjb" path="res://elements/FSM/NPC_states/chase_state/chase_state.tscn" id="5_pvcst"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37o73"]
+atlas = ExtResource("3_48a52")
+region = Rect2(576, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlevv"]
+atlas = ExtResource("3_48a52")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtn7f"]
+atlas = ExtResource("3_48a52")
+region = Rect2(832, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvcst"]
+atlas = ExtResource("3_48a52")
+region = Rect2(896, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfpiw"]
+atlas = ExtResource("3_48a52")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrq72"]
+atlas = ExtResource("3_48a52")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kp6v"]
+atlas = ExtResource("3_48a52")
+region = Rect2(448, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw0gl"]
+atlas = ExtResource("3_48a52")
+region = Rect2(1024, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmk5y"]
+atlas = ExtResource("3_48a52")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koct4"]
+atlas = ExtResource("3_48a52")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osi3h"]
+atlas = ExtResource("3_48a52")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atsnr"]
+atlas = ExtResource("3_48a52")
+region = Rect2(1088, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ubq1"]
+atlas = ExtResource("3_48a52")
+region = Rect2(960, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faci2"]
+atlas = ExtResource("3_48a52")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d77wc"]
+atlas = ExtResource("3_48a52")
+region = Rect2(1024, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtey4"]
+atlas = ExtResource("3_48a52")
+region = Rect2(1088, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg685"]
+atlas = ExtResource("3_48a52")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x1war"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37o73")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlevv")
+}],
+"loop": false,
+"name": &"attack_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtn7f")
+}],
+"loop": false,
+"name": &"attack_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvcst")
+}],
+"loop": true,
+"name": &"chase",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfpiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrq72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kp6v")
+}],
+"loop": false,
+"name": &"death",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sw0gl")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmk5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koct4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osi3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koct4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atsnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ubq1")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faci2")
+}],
+"loop": false,
+"name": &"landing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d77wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtey4")
+}],
+"loop": false,
+"name": &"look_down",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mg685")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pvcst"]
+radius = 15.0
+height = 44.0
 
 [node name="NPC" unique_id=763419446 instance=ExtResource("1_68lgc")]
+collision_layer = 12
+collision_mask = 7
 script = ExtResource("2_q41cc")
+visibility_range = 150.0
+max_HP = 10
+speed = 100.0
+attack_range = 40.0
+attack_delay = 1.0
+damage_immunity = 0.1
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=147210089]
+modulate = Color(0, 1, 1, 1)
+scale = Vector2(0.9, 0.9)
+sprite_frames = SubResource("SpriteFrames_x1war")
+animation = &"chase"
+autoplay = "idle"
+offset = Vector2(0, 2)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1254880589]
+shape = SubResource("CapsuleShape2D_pvcst")
+
+[node name="patrol_state" parent="state_machine" parent_id_path=PackedInt32Array(132109719) index="5" unique_id=371355705 instance=ExtResource("4_x1war")]
+
+[node name="chase_state" parent="state_machine" parent_id_path=PackedInt32Array(132109719) index="6" unique_id=1363661021 instance=ExtResource("5_pvcst")]
+
+[node name="Rays" type="Node2D" parent="." index="3" unique_id=1375362541]
+
+[node name="RayCast_vision" type="RayCast2D" parent="Rays" index="0" unique_id=1602317921]
+position = Vector2(0, -12)
+target_position = Vector2(150, 0)
+collision_mask = 4
+
+[node name="RayCast_wall" type="RayCast2D" parent="Rays" index="1" unique_id=1604679209]
+target_position = Vector2(48, 0)
+collision_mask = 2
+
+[node name="RayCast_floor" type="RayCast2D" parent="Rays" index="2" unique_id=571801367]
+position = Vector2(20, 0)
+collision_mask = 2
+
+[node name="Direction_timer" type="Timer" parent="." index="4" unique_id=103221004]
+process_callback = 0
+one_shot = true

@@ -19,7 +19,7 @@ class_name Person
 ##Время неуязвимости после получения урона в секундах
 @export var damage_immunity: float = 0.3
 
-var direction : float = 0.0
+var direction : float = 1.0
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -35,9 +35,13 @@ func _physics_process(delta: float)-> void:
 func _process(delta: float)-> void:
 	state_machine.update(delta)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("check_states"):
+		print("я ", self, " state = ", state_machine.current_state)
+
 ##Функция получения урона. Безопасныое отключение коллизии, индикация цветом и проверка смерти
 func get_damage(damage : int)-> void:
-	collision_shape.set_deferred("disabled", true)
+	#collision_shape.set_deferred("disabled", true)
 	anim_sprite.modulate = Color(1.0, 0.2, 0.2)
 	HP -= damage
 	if HP <= 0:
@@ -45,7 +49,7 @@ func get_damage(damage : int)-> void:
 	else:
 		await get_tree().create_timer(damage_immunity).timeout
 		anim_sprite.modulate = Color(1.0, 1.0, 1.0)
-		collision_shape.set_deferred("disabled", false)	
+		#collision_shape.set_deferred("disabled", false)	
 		
 ## Смэрть
 func _die()-> void:
@@ -65,23 +69,8 @@ func play_animation(anim: String)-> void:
 		return	
 
 func get_direction()-> float:
-	direction = 1.0
-	return 1.0
-#func _physics_process(delta: float) -> void:
-	## Add the gravity.
-	#if not is_on_floor():
-		#velocity += get_gravity() * delta
-#
-	## Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
-#
-	## Get the input direction and handle the movement/deceleration.
-	## As good practice, you should replace UI actions with custom gameplay actions.
-	#var direction := Input.get_axis("ui_left", "ui_right")
-	#if direction:
-		#velocity.x = direction * SPEED
-	#else:
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
-#
-	#move_and_slide()
+	return direction
+	
+func set_direction(new_direction: float)-> void:
+	direction = new_direction
+	update_look_direction(direction)

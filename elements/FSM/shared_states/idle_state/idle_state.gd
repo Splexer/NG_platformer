@@ -16,9 +16,9 @@ func physics_update(delta: float)-> void:
 		
 	var npc: NPC = person as NPC
 	if npc:
-		if npc.target and npc.global_position.distance_to(npc.target.global_position) <= npc.detection_radius:
-			state_machine.transition_to("сhase_state")
-		elif not npc.patrol_points.is_empty():
+		if npc.target and npc.global_position.distance_to(npc.target.global_position) <= npc.visibility_range:
+			state_machine.transition_to("chase_state")
+		else:
 			state_machine.transition_to("patrol_state")
 			
 	if person is Player:
