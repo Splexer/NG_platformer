@@ -12,11 +12,11 @@
 [node name="base_level" parent="." unique_id=1445714984 instance=ExtResource("1_xiose")]
 
 [node name="Player" parent="." unique_id=763419446 instance=ExtResource("2_r77kf")]
-position = Vector2(5, -135)
+position = Vector2(-194, 58)
 collision_mask = 15
 
 [node name="NPC" parent="." unique_id=1562395949 instance=ExtResource("3_3gdo0")]
-position = Vector2(-144, -82)
+position = Vector2(-55, -78)
 
 [node name="NPC2" parent="." unique_id=249021400 instance=ExtResource("3_3gdo0")]
-position = Vector2(792, -77)
+position = Vector2(781, 25)
