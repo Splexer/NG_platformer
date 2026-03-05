@@ -24,6 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func get_damage(damage : int)-> void:
 	call_deferred("set_collision_layer_value", 3, false)
+	_play_damage()
 	anim_sprite.modulate = Color(1.0, 0.2, 0.2)
 	HP -= damage
 	Events.player_hp_update.emit(HP, max_HP)

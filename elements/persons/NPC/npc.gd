@@ -16,6 +16,7 @@ var target: Player
 
 func get_damage(damage : int)-> void:
 	call_deferred("set_collision_layer_value", 4, false)
+	_play_damage()
 	anim_sprite.modulate = Color(1.0, 0.2, 0.2)
 	HP -= damage
 	if HP <= 0:

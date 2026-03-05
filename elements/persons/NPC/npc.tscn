@@ -196,9 +196,13 @@ collision_mask = 7
 script = ExtResource("2_q41cc")
 visibility_range = 150.0
 max_HP = 10
+HP = 1
 speed = 100.0
+damage = 1
 attack_range = 40.0
 attack_delay = 1.0
+jump_force = -400.0
+looking_to_the_right = true
 damage_immunity = 0.1
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=147210089]

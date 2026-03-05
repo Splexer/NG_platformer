@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bkv3j5qu880tu" path="res://elements/level/base_level/base_level.tscn" id="1_xiose"]
 [ext_resource type="PackedScene" uid="uid://bp1iojeigcpnp" path="res://elements/persons/player/player.tscn" id="2_r77kf"]
 [ext_resource type="PackedScene" uid="uid://bwtja33g21a15" path="res://elements/persons/NPC/npc.tscn" id="3_3gdo0"]
+[ext_resource type="PackedScene" uid="uid://bur201i121qfm" path="res://elements/music_player/music_player.tscn" id="5_xa854"]
 
 [node name="Main" type="Node2D" unique_id=1913807260]
 
@@ -20,3 +21,5 @@ position = Vector2(-55, -78)
 
 [node name="NPC2" parent="." unique_id=249021400 instance=ExtResource("3_3gdo0")]
 position = Vector2(781, 25)
+
+[node name="MusicPlayer" parent="." unique_id=1824808188 instance=ExtResource("5_xa854")]

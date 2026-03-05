@@ -21,6 +21,10 @@ class_name Person
 
 var direction : float = 1.0
 
+@onready var stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var hit_sound: Resource = preload("res://assets/sounds/27_sword_miss_1.wav")
+@onready var damage_sound: Resource = preload("res://assets/sounds/soft-quick-punch.ogg")
+
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: StateMachine = $state_machine
@@ -74,3 +78,11 @@ func get_direction()-> float:
 func set_direction(new_direction: float)-> void:
 	direction = new_direction
 	update_look_direction(direction)
+	
+func play_hit()-> void:
+	stream_player.stream = hit_sound
+	stream_player.play()
+func _play_damage()-> void:
+	stream_player.stream = damage_sound
+	stream_player.play()
+	

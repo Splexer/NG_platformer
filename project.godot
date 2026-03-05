@@ -33,6 +33,7 @@ window/stretch/mode="viewport"
 folder_colors={
 "res://UI/": "teal",
 "res://assets/": "pink",
+"res://assets/sounds/": "orange",
 "res://core/": "gray",
 "res://elements/": "orange",
 "res://elements/FSM/NPC_states/": "red",
@@ -42,6 +43,7 @@ folder_colors={
 "res://elements/FSM/state_machine/": "purple",
 "res://elements/level/": "yellow",
 "res://elements/level/base_level/": "purple",
+"res://elements/music_player/": "yellow",
 "res://elements/persons/NPC/": "orange"
 }
 

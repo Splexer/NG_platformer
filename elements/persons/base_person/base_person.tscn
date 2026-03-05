@@ -7,10 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://bu7efi415e2x5" path="res://elements/FSM/shared_states/fall_state/fall_state.tscn" id="6_pohwr"]
 [ext_resource type="PackedScene" uid="uid://conscq7a0gspm" path="res://elements/FSM/shared_states/landing_state/landing_state.tscn" id="7_chkih"]
 [ext_resource type="PackedScene" uid="uid://bygwam64an466" path="res://elements/FSM/shared_states/attack_state/attack_state.tscn" id="8_1uy3v"]
+[ext_resource type="AudioStream" uid="uid://dkjkmgiv1wtr6" path="res://assets/sounds/27_sword_miss_1.wav" id="8_n7llv"]
 
 [node name="base_person" type="CharacterBody2D" unique_id=763419446]
 collision_mask = 15
 script = ExtResource("1_nc1tx")
+max_HP = null
+HP = null
+speed = null
+damage = null
+attack_range = null
+attack_delay = null
+jump_force = null
+looking_to_the_right = null
+damage_immunity = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=147210089]
 
@@ -28,3 +38,8 @@ initial_state = NodePath("idle_state")
 [node name="landing_state" parent="state_machine" unique_id=1650693448 instance=ExtResource("7_chkih")]
 
 [node name="attack_state" parent="state_machine" unique_id=799907004 instance=ExtResource("8_1uy3v")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1515218346]
+stream = ExtResource("8_n7llv")
+volume_db = -8.0
+bus = &"VFX"

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bur201i121qfm"]
+
+[ext_resource type="AudioStream" uid="uid://csi8tnvpde62v" path="res://assets/sounds/Sketchbook 2025-12-14 LOOP.ogg" id="1_slnj2"]
+
+[node name="MusicPlayer" type="Node" unique_id=1824808188]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=882225613]
+stream = ExtResource("1_slnj2")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
